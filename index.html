@@ -7,10 +7,12 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
     <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+    <link rel="shortcut icon" href="images2\favicon.ico" type="image/x-icon">
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
+
 </head>
 <body>
 
@@ -45,6 +47,11 @@ img{
   height: 50%;
   width: 50%;
 }
+}
+img.one{
+  height: 25%;
+  width: 25%;
+}
 </style>
 
 <div id='map'></div>
@@ -65,7 +72,7 @@ img{
         <p>I’ve lived my whole life before college just outside of Denver in Aurora.
 High school overall was a great experience for me. Most of my time was spent on weekend ski trips with friends, playing soccer, and/or studying for AP classes 🙄.</p>
 <p>I graduated in 2015 as Valedictorian and Student Body President.
-<br/><br/><img src="images2\graduation.jpg"></p>
+<br/><br/><img class="one" src="images2\graduation.jpg"></p>
 
     </section>
     <section id='nu'>
@@ -247,10 +254,10 @@ var chapters = {
         pitch: 36.00
     },
     'busan': {
-        bearing: 1.15,
-        center: [129.143822, 35.058050],
-        zoom: 10.23,
-        pitch: 48.00
+        bearing: -.45,
+        center: [129.088103, 35.137812],
+        zoom: 10.04,
+        pitch: 25.5
     },
     'asia': {
         bearing: 0,
