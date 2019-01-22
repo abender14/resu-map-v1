@@ -6,16 +6,121 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
-    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
     <link rel="shortcut icon" href="images2\favicon.ico" type="image/x-icon">
     <style>
-        body { margin:0; padding:0; }
+        html {scroll-behavior: smooth;}
+        body { margin:0; padding:0; font-family: 'Catamaran'; background-color: #ededed;}
         #map { position:absolute; top:0; bottom:0; width:100%; }
+
+        .topnav {
+         overflow: hidden;
+         background-color: #3c455c;
+         width: 50%;
+         margin-left: 50%;
+        }
+
+        .topnav a {
+         float: left;
+         display: block;
+         color: #ededed;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+         font-size: 17px;
+        }
+
+        .topnav .icon {
+         display: none;
+        }
+
+        .dropdown {
+         float: right;
+         margin-right: 0%;
+         overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+         font-size: 17px;
+         border: none;
+         outline: none;
+         color: #ededed;
+         padding: 14px 16px;
+         background-color: inherit;
+         font-family: inherit;
+         margin: 0;
+        }
+
+        .dropdown-content {
+         display: none;
+         position: absolute;
+         background-color: #dacfbe;
+         min-width: 108px;
+         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+         z-index: 1;
+         left: auto;
+         right: 0;
+        }
+
+        .dropdown-content a {
+         float: none;
+         color: #3c455c;
+         padding: 12px 16px;
+         text-decoration: none;
+         display: block;
+         text-align: left;
+        }
+
+        .topnav a:hover, .dropdown:hover .dropbtn {
+         background-color: #dacfbe;
+         color: #3c455c;
+        }
+
+        .dropdown-content a:hover {
+         background-color: #c4e0ed;
+         color: #3c455c;
+        }
+
+        .dropdown:hover .dropdown-content {
+         display: block;
+        }
+
+        @media screen and (max-width: 600px) {
+         .topnav a:not(:first-child), .dropdown .dropbtn {
+           display: none;
+         }
+         .topnav a.icon {
+           float: right;
+           display: block;
+         }
+        }
+
+        @media screen and (max-width: 600px) {
+         .topnav.responsive {position: relative;}
+         .topnav.responsive .icon {
+           position: absolute;
+           right: 0;
+           top: 0;
+         }
+         .topnav.responsive a {
+           float: none;
+           display: block;
+           text-align: left;
+         }
+         .topnav.responsive .dropdown {float: none;}
+         .topnav.responsive .dropdown-content {position: relative;}
+         .topnav.responsive .dropdown .dropbtn {
+           display: block;
+           width: 100%;
+           text-align: left;
+         }
+        }
+      }
     </style>
 
 </head>
 <body>
-
 <style>
 #map {
     position: fixed;
@@ -24,10 +129,10 @@
 #features {
     width: 50%;
     margin-left: 50%;
-    font-family: 'Inconsolata';
-    color: #2d4262;
-    overflow-y: scroll;
-    background-color: #fafafa;
+    font-family: 'Catamaran';
+    color: #3c455c;
+    overflow-y: visible;
+    background-color: #ededed;
 }
 section {
     padding:  60px 50px;
@@ -41,29 +146,58 @@ section.active {
 }
 section:last-child {
     border-bottom: none;
-    margin-bottom: 500px;
+    margin-bottom: 1000px;
 }
-img{
-  height: 50%;
-  width: 50%;
-}
-}
-img.one{
-  height: 25%;
-  width: 25%;
-}
+
 </style>
+<div class="topnav" id="myTopnav">
+ <div class="dropdown" >
+   <button class="dropbtn">Navigate
+     <i class="fa fa-caret-down"></i>
+   </button>
+   <div class="dropdown-content">
+     <a href="#welcome" class="active">Welcome</a>
+     <a href="#ghs">Grandview High School</a>
+     <a href="#nu">Northeastern University</a>
+     <a href="#lahey">1st co-op: Lahey</a>
+     <a href="#marathon">Boston Marathon Volunteering</a>
+     <a href="#nl">Study Abroad: Delft</a>
+     <a href="#europe">Europe Travel</a>
+     <a href="#pwc1">2nd co-op: PwC</a>
+     <a href="#pwc2">PwC Chicago Client</a>
+     <a href="#pwc3">PwC Bay Area Client</a>
+     <a href="#korea">Study Abroad: Seoul</a>
+     <a href="#busan">Study Abroad: Busan</a>
+     <a href="#asia">Asia Travel</a>
+     <a href="#grad">Machine Learning Project</a>
+     <a href="#next">What's next?</a>
+   </div>
+ </div>
+ <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+<script>
+function myFunction() {
+ var x = document.getElementById("myTopnav");
+ if (x.className === "topnav") {
+   x.className += " responsive";
+ } else {
+   x.className = "topnav";
+ }
+}
+</script>
 
 <div id='map'></div>
+
 <div id='features'>
     <section id='welcome' class='active'>
         <h3>Hi there! 👋</h3>
-        <p>You’ve stumbled upon my resumap — welcome!<br/><br/>I created this in an attempt to further paint the picture of who I am. Without further ado, my name is Alex Bender; I’m originally from right here in the great state of Colorado.</p>
-        <p>Before you learn anything else about me, I think you should know that I love climbing mountains... especially Colorado’s coveted 14ers. I have climbed 25 of them so far!</p>
+        <p>You’ve stumbled upon my resumap — welcome!<br/><br/>I created this to further paint the picture of who I am. Without further ado, my name is Alex Bender; I’m originally from right here in the great state of Colorado.</p>
+        <p>In order to understand how I approach professional challenges and before you learn anything else about me, I think you should know that I love climbing mountains... especially Colorado’s coveted 14ers. I have climbed 25 of them so far!</p>
         <p>Here’s a picture of me at an elevation of 14,203 feet near the summit of Crestone Needle.
         <br/><br/><img src="images2\crestone.jpg"></p>
 
-<p>Outside of work, I also thoroughly enjoy biking, exploring new cities, and playing the mandolin.</p>
+<p>When found not contributing to mission-driven projects, you can find me biking, exploring new cities, and playing the mandolin.</p>
 
 <p>Scroll through the right side of your page to zoom through chapters of my life. Enjoy the flight!✈️</p>
     </section>
@@ -72,7 +206,7 @@ img.one{
         <p>I’ve lived my whole life before college just outside of Denver in Aurora.
 High school overall was a great experience for me. Most of my time was spent on weekend ski trips with friends, playing soccer, and/or studying for AP classes.</p>
 <p>I graduated in 2015 as Valedictorian and Student Body President.
-<br/><br/><img class="one" src="images2\graduation.jpg"></p>
+<br/><br/><img src="images2\graduation.jpg"></p>
 
     </section>
     <section id='nu'>
@@ -84,7 +218,7 @@ High school overall was a great experience for me. Most of my time was spent on 
 <p>I’ve also spent time as one of the only student members on Northeastern’s <a href="https://www.northeastern.edu/crossing/" target="_blank">Community Advisory Board</a>, as an <a href= "https://youtu.be/p1qzQPn40i4?t=109" target="_blank">Orientation Leader</a>, as a Resident Assistant for on-campus residence halls, and as a Husky Ambassador tour guide.</p>
     </section>
     <section id='lahey'>
-        <h3>Lahey Health System</h3>
+        <h3>1st co-op: Lahey Health System</h3>
 
         <p>One of Northeastern’s main draws is its flagship co-op program — which enables students to have a 6th-month full-time employment opportunity at a company of their choosing instead of taking classes.
 This longer term of employment gives students a higher immersion than a typical internship would, and it gives companies skilled employees and a robust talent pipeline (especially with subsequent co-ops). What a win-win! 🏆
@@ -96,7 +230,7 @@ This longer term of employment gives students a higher immersion than a typical 
     <section id='marathon'>
         <h3>Boston Marathon</h3>
         <p>Since high school, I’ve always enjoyed and made time for volunteering. One of my favorite experiences has been volunteering at the finish line of the Boston Marathon as part of a composting and recycling effort (yes, even despite the challenging weather). You know all those bananas, CLIF Bars, and water bottles that the runners scarf down upon completing the race? Yeah, we’re in charge of making sure those are disposed of of <i>sustainably</i>. </p>
-        <p>I’m approaching my 4th year as a volunteer now!</p>
+        <p>I’m approaching my 4th year as a volunteer now! One day I hope to be on the oher end of this race — as a runner.</p>
         <p><img class="one" src="images2\marathon.jpg"></p>
     </section>
     <section id='nl'>
@@ -115,7 +249,7 @@ I also authored an <a href="https://web.northeastern.edu/holland2017sustrans/?pa
         <p><img src="images2\montblanc.jpg"></p>
     </section>
 <section id='pwc1'>
-        <h3>PricewaterhouseCoopers</h3>
+        <h3>2nd co-op: PricewaterhouseCoopers</h3>
         <p>Upon returning to the US, and after another semester in Boston, I soared on down to New York City to begin my second 6th month co-op at PricewaterhouseCoopers (PwC) in their mergers & acquisitions (M&A) management consulting team. </p>
         <p><img src="images2\pwc.jpg"></p>
         <p>I’ve realized that learning is much “stickier” on a co-op; it just stays with you more effortlessly. In this co-op, I furthered my depth of knowledge in data analysis, data visualization, project management, client-facing work, and corporate/business development.</p>
@@ -304,5 +438,6 @@ function isElementOnScreen(id) {
     return bounds.top < window.innerHeight && bounds.bottom > 0;
 }
 </script>
+
 </body>
 </html>
