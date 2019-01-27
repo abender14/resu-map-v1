@@ -9,11 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Catamaran' rel='stylesheet'>
     <link rel="shortcut icon" href="images2\favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
     <style>
         html {scroll-behavior: smooth;}
         body { margin:0; padding:0; font-family: 'Catamaran'; background-color: #ededed;}
         #map { position:absolute; top:0; bottom:0; width:100%; }
 
+        .dialog {
+         font-family: Catamaran;
+         color: #3c455c;
+        }
         .topnav {
          overflow: hidden;
          background-color: #3c455c;
@@ -118,9 +131,13 @@
         }
       }
     </style>
-
 </head>
 <body>
+<div id="dialog" class = "dialog" title="Instructions:">
+  <p>Scroll through the right side of your page to zoom through chapters of my life. <br/><br/>
+  As you scroll on the right, the map on the left will fly to the respective locations. <br/><br/>
+  Sit back, relax, and enjoy the flight! ✈️</p>
+</div>
 <style>
 #map {
     position: fixed;
@@ -198,7 +215,6 @@ function myFunction() {
 
 <p>When found not contributing to mission-driven projects, you can find me biking, exploring new cities, and playing the mandolin.</p>
 
-<p>Scroll through the right side of your page to zoom through chapters of my life. Enjoy the flight!✈️</p>
     </section>
     <section id='ghs' class='active'>
         <h3>Grandview High School</h3>
