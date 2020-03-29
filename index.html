@@ -13,10 +13,10 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#dialog" ).dialog();
-  } );
+  <script type="text/javascript">
+      $(window).on('load',function(){
+          $('#dialog').modal('show');
+      });
   </script>
     <style>
         html {scroll-behavior: smooth;}
@@ -133,7 +133,7 @@
     </style>
 </head>
 <body>
-<div class = "dialog" title="Instructions:">
+<div id="dialog" class = "dialog" title="Instructions:">
   <p>Scroll through the right side of your page to zoom through chapters of my life. <br/><br/>
   As you scroll on the right, the map on the left will fly to the respective locations. <br/><br/>
   Use the navigation dropdown on the top right to jump directly to locations.<br/><br/>
